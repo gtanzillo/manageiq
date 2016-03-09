@@ -138,7 +138,7 @@ module MiqServer::EnvironmentManagement
                          end
 
       next unless disk_usage_event
-      msg = "Filesystem: #{disk[:filesystem]} (#{disk[:type]}) on #{disk[:mount_point]} is #{disk[:used_bytes_percent]}% full with #{ActionView::Base.new.number_to_human_size(disk[:available_bytes])} free."
+      msg = "Filesystem: #{disk[:filesystem]} (#{disk[:type]}) on #{disk[:mount_point]} is #{disk[:used_bytes_percent]}% full with #{ApplicationController.new.number_to_human_size(disk[:available_bytes])} free."
       MiqEvent.raise_evm_event_queue(self, disk_usage_event, :event_details => msg)
     end
   end

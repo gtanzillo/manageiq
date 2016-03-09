@@ -292,7 +292,7 @@ class CimComputerSystem < MiqCimInstance
     return if nrs.nil?
 
     nrs.aggr_list_info.inject({}) do |h, aggr|
-      free_space   = ActionView::Base.new.number_to_human_size(aggr.size_available.to_i, :precision => 2)
+      free_space   = ApplicationController.new.number_to_human_size(aggr.size_available.to_i, :precision => 2)
       h[aggr.name] = "#{aggr.name} (#{free_space} available)"
       h
     end

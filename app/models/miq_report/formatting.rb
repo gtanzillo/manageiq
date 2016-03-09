@@ -122,7 +122,7 @@ module MiqReport::Formatting
     av_options[:delimiter] = options[:delimiter] if options.key?(:delimiter)
     av_options[:separator] = options[:separator] if options.key?(:separator)
     val = apply_format_precision(val, options[:precision])
-    val = ActionView::Base.new.number_with_delimiter(val, av_options)
+    val = ApplicationController.new.number_with_delimiter(val, av_options)
     apply_prefix_and_suffix(val, options)
   end
 
@@ -131,14 +131,14 @@ module MiqReport::Formatting
     av_options[:delimiter] = options[:delimiter] if options.key?(:delimiter)
     av_options[:separator] = options[:separator] if options.key?(:separator)
     val = apply_format_precision(val, options[:precision])
-    val = ActionView::Base.new.number_to_currency(val, av_options)
+    val = ApplicationController.new.number_to_currency(val, av_options)
     apply_prefix_and_suffix(val, options)
   end
 
   def format_bytes_to_human_size(val, options = {})
     av_options = {}
     av_options[:precision] = options[:precision] || 0  # Precision of 0 returns the significant digits
-    val = ActionView::Base.new.number_to_human_size(val, av_options)
+    val = ApplicationController.new.number_to_human_size(val, av_options)
     apply_prefix_and_suffix(val, options)
   end
 
@@ -155,7 +155,7 @@ module MiqReport::Formatting
   end
 
   def format_mhz_to_human_size(val, options = {})
-    val = ActionView::Base.new.mhz_to_human_size(val, options[:precision])
+    val = ApplicationController.new.mhz_to_human_size(val, options[:precision])
     apply_prefix_and_suffix(val, options)
   end
 
