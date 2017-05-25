@@ -1,0 +1,2 @@
+include Vmdb::ConsoleMethods
+simulate_queue_worker

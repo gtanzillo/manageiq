@@ -1,0 +1,6 @@
+#!/bin/bash
+
+appliance-initialize.sh
+
+exec "$@"
+#/var/www/miq/vmdb/bin/rails r /var/www/miq/vmdb/lib/workers/bin/simulate_queue_worker.rb
